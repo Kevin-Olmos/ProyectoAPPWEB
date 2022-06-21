@@ -1,0 +1,57 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema cliente_contactos
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema cliente_contactos
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `cliente_contactos` DEFAULT CHARACTER SET utf8 ;
+USE `cliente_contactos` ;
+
+-- -----------------------------------------------------
+-- Table `cliente_contactos`.`cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cliente_contactos`.`cliente` (
+  `idcliente` INT NOT NULL AUTO_INCREMENT,
+  `numero_cliente` VARCHAR(45) NOT NULL,
+  `nombre_comercial` VARCHAR(13) NOT NULL,
+  `calle` VARCHAR(45) NOT NULL,
+  `rfc` VARCHAR(45) NOT NULL,
+  `codigopostal` VARCHAR(45) NOT NULL,
+  `ciudad` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `pais` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idcliente`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cliente_contactos`.`contactos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cliente_contactos`.`contactos` (
+  `idcontactos` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `apellido_paterno` VARCHAR(45) NOT NULL,
+  `apellido_materno` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `no_tel` VARCHAR(45) NOT NULL,
+  `cliente_idcliente` INT NOT NULL,
+  PRIMARY KEY (`idcontactos`, `cliente_idcliente`),
+  INDEX `fk_contactos_cliente_idx` (`cliente_idcliente` ASC),
+  CONSTRAINT `fk_contactos_cliente`
+    FOREIGN KEY (`cliente_idcliente`)
+    REFERENCES `cliente_contactos`.`cliente` (`idcliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

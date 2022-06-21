@@ -1,0 +1,42 @@
+<div class="container">
+  <p>Modificar los campos a desear</p>
+  <div class="row">
+    <div class="col-sm-6">
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Nombre del contacto</label>
+          <input [(ngModel)]="contacto.nombre" type="text" class="form-control" name="nombre">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Apellido Paterno</label>
+        <input [(ngModel)]="contacto.apellido_paterno" type="text" class="form-control" name="apellido_paterno">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Apellido Materno</label>
+      <input [(ngModel)]="contacto.apellido_materno" type="text" class="form-control" name="apellido_materno">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input [(ngModel)]="contacto.email" type="text" class="form-control" name="email">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">No.Telefono</label>
+    <input [(ngModel)]="contacto.no_tel" type="text" class="form-control" name="no_tel">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">ID Cliente</label>
+    <input [(ngModel)]="contacto.cliente_idcliente" type="text" class="form-control" name="cliente_idcliente">
+  </div>
+
+  <button (click)="modificar()" class="btn btn-primary">Guardar</button>
+      </form>
+
+    </div>
+
+  </div>
+  </div>
